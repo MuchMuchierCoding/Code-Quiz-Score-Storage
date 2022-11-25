@@ -10,27 +10,37 @@
 </head>
 
 <body>
-    <!-- Highscores Link-->
-    <a href="">View Highscores</a>
+    <!-- Link to Highscores-->
+    <a id="highScore" href="">View Highscores</a>
     <!-- This is the main body element -->
     <div id="main">
         <!-- Div for timer -->
         <div id="timer"></div>
-        <!-- Div for quiz content -->
+        <!-- Div for quizs -->
         <div id="quizContainer">
             <h1>Coding Quiz Challenge</h1>
             <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
-                answers
-                will penalize your score/time by ten seconds!</p>
+                answers will penalize your score/time by ten seconds!</p>
             <ul id="choicesUl"></ul>
             <!-- Start Button -->
-            <button id="startQuiz">Start Quiz</button>
+            <button id="startQuiz" type="button">Start Quiz</button>
         </div>
 
     </div>
 
 
-    <script type="text/javascript" src="./assets/script.js"></script>
+    <script>
+        const startBtn = document.getElementById("#startQuiz");
+        
+        console.log(startBtn);
+
+        startBtn.addEventListener("click", function(e) {
+            console.log("The button was clicked")
+        });
+
+    </script> 
+    
+   
 
 
 </body>
