@@ -2,12 +2,44 @@
 var highScore = document.querySelector("#highScore");
 /*var clear = document.querySelector("#clear");
 var goBack = document.querySelector("#goBack");*/
-const startBtn = document.getElementById("#startQuiz");
+var startBtn = document.getElementById("startQuiz");
+var questionContainerEl = document.getElementById("questionContainer");
+var answerOptions = document.getElementById("answers");
 var timerCountDown = document.querySelector("#timer");
+var title = document.getElementById('quizTitle');
+var instructions = document.getElementById('quizInstructions'); 
+var questionOptions, questionBank
 
-console.log(startBtn);
+startBtn.addEventListener('click', startGame);
 
+function startGame() {
+    console.log('Started')
+    startBtn.classList.add('hide')
+    questionContainerEl.classList.remove('hide')
+    title.classList.add('hide')
+    instructions.classList.add('hide')
+    questionOptions = questionBank.sort(() => Math.random() - 0)
+    questionBank = 0
+    questionSets()
+};
 
+function questionSets() {
+    showQuestion()
+}
+
+function selectAnswer() {
+
+}
+
+var questions = [
+    {
+       questions: 'What is...',
+       answers: [
+        {text: '4', correct: true},
+        {text: '22', correct: false}
+       ] 
+    }
+]
 
 /*
 GIVEN I am taking a code quiz

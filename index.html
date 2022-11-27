@@ -18,10 +18,18 @@
         <div id="timer"></div>
         <!-- Div for quizs -->
         <div id="quizContainer">
-            <h1>Coding Quiz Challenge</h1>
-            <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
+            <h1 id="quizTitle">Coding Quiz Challenge</h1>
+            <p id="quizInstructions">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
                 answers will penalize your score/time by ten seconds!</p>
-            <ul id="choicesUl"></ul>
+            <div id="questionContainer" class="hide">
+            <div id="question">Question</div>
+            <div id="answers" class="btn-grid" class="hide">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+            </div>
             <!-- Start Button -->
             <button id="startQuiz" type="button">Start Quiz</button>
         </div>
@@ -29,16 +37,7 @@
     </div>
 
 
-    <script>
-        const startBtn = document.getElementById("#startQuiz");
-        
-        console.log(startBtn);
-
-        startBtn.addEventListener("click", function(e) {
-            console.log("The button was clicked")
-        });
-
-    </script> 
+    <script defer src="./assets/script.js"></script>
     
    
 
