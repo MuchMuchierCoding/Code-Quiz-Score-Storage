@@ -2,38 +2,53 @@
 var highScore = document.querySelector("#highScore");
 /*var clear = document.querySelector("#clear");
 var goBack = document.querySelector("#goBack");*/
-var startBtn = document.getElementById("startQuiz");
-var questionContainerEl = document.getElementById("questionContainer");
-var answerOptions = document.getElementById("answers");
+var startBtn = document.getElementById('startQuiz');
+var questionContainerEl = document.getElementById('questionContainer');
+var answerOptions = document.getElementById('answers');
+var questionBank = document.getElementById('question');
 var timerCountDown = document.querySelector("#timer");
 var title = document.getElementById('quizTitle');
 var instructions = document.getElementById('quizInstructions'); 
 var questionOptions, questionBank
+var questionElement = document.getElementById('question');
+var answerButtonsElements = document.getElementById('answers');
 
 startBtn.addEventListener('click', startGame);
 
 function startGame() {
     console.log('Started')
     startBtn.classList.add('hide')
+    instructions.classList.add('hide')
     questionContainerEl.classList.remove('hide')
+    setNextQuestion()
     title.classList.add('hide')
     instructions.classList.add('hide')
-    questionOptions = questionBank.sort(() => Math.random() - 0)
+    questionOptions = questions.sort(() => Math.random() - .5)
     questionBank = 0
     questionSets()
 };
 
-function questionSets() {
-    showQuestion()
+function setNextQuestion() {
+    showQuestion(questionOptions[questionBank])
+}
+
+function showQuestion(question) {
+    questionElement.innerText = question.question
 }
 
 function selectAnswer() {
 
 }
 
-var questions = [
+function questionSets() {
+    showQuestion()
+}
+
+
+
+var question = [
     {
-       questions: 'What is...',
+       question: 'What is 2+2?',
        answers: [
         {text: '4', correct: true},
         {text: '22', correct: false}
