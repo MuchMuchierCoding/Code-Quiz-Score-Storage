@@ -1,39 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./assets/style.css">
-    <title>Code Quiz</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="./assets/style.css" rel="stylesheet">
+  <title>Code Quiz</title>
 </head>
-
 <body>
-    <!-- Link to Highscores-->
-    <a id="highScore" href="">View Highscores</a>
-    <!-- This is the main body element -->
-    <div id="main">
-        <!-- Div for timer -->
-        <div id="timer"></div>
-        <!-- Div for quizs -->
-    <div id="quizContainer">
-            <h1 id="quizTitle">Coding Quiz Challenge</h1>
-            <p id="quizInstructions">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
-            answers will penalize your score/time by ten seconds!</p>
+     <!-- Link to Highscores-->
+     <a id="highScore" href="">View Highscores</a>
+     <!-- This is the main body element -->
+     <div id="main">
+         <!-- Div for timer -->
+         <div id="timer"></div>
+         <!-- Div for quizs -->
+    <div class="quizContainer">
+        <h1 id="quizTitle">Coding Quiz Challenge</h1>
+        <p id="quizInstructions">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
+        answers will penalize your score/time by ten seconds!</p>
         <div id="questionContainer" class="hide">
             <div id="question">Question</div>
-            <div id="answers" class="btn-grid" class="hide">
+            <div id="answers" class="btn-grid">
                 <button class="btn">Answer 1</button>
                 <button class="btn">Answer 2</button>
                 <button class="btn">Answer 3</button>
                 <button class="btn">Answer 4</button>
-            </div>
-        </div>
-            <!-- Start Button -->
-            <button id="startQuiz" type="button">Start Quiz</button>
         </div>
     </div>
-    <script defer src="./assets/script.js"></script>
+      <button id="startQuiz" class="start-btn btn">Start</button>
+    </div>
+  </div>
+  <script src="./assets/script.js"></script>
 </body>
 </html>
