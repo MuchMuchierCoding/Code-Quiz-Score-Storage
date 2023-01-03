@@ -24,8 +24,8 @@ p {
 }
 
 #startQuiz {
-    background-color: rgb(56, 17, 119);
-    margin-left: 33%;
+    background-color: rgb(78, 218, 87);
+    margin-left: 38%;
     padding: 15px 32px;
     font-size: 20px;
     color: white;
@@ -69,8 +69,17 @@ p {
     display:none;
 }
 
-#timer {
-    float: right;
+.timer {
+    width: 800px;
+    max-width: 80%;
+    margin: 20px;
+    background-color:  rgb(56, 17, 119);
+    border-radius: 0%;
+    padding: 10px;
+    color: aliceblue;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 20px;
 }
 
 #goBack {
@@ -83,11 +92,12 @@ p {
     left: 55%;
     width: auto;
     text-align: center;
-    
     text-decoration: none;
 }
 
-
+#quizTitle {
+    color:rgb(247, 169, 91)
+}
 
 #clear {
     background-color: purple;

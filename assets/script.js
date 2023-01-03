@@ -1,14 +1,34 @@
-var startBtn = document.getElementById('startQuiz')
-var next = document.getElementById('nextButton')
-var questionContainerEl = document.getElementById('questionContainer')
-var displayedQuestion = document.getElementById('question')
-var answerOptions = document.getElementById('answers')
-var instructions = document.getElementById('quizInstructions')
-var title = document.getElementById('quizTitle')
+var startBtn = document.getElementById('startQuiz');
+var questionContainerEl = document.getElementById('questionContainer');
+var displayedQuestion = document.getElementById('question');
+var answerOptions = document.getElementById('answers');
+var instructions = document.getElementById('quizInstructions');
+var title = document.getElementById('quizTitle');
 var questionOptions, questionBank
+var timeEl = document.querySelector(".timer");
+var secondsLeft = 30;
 
-startBtn.addEventListener('click', startGame)
+function setTime() {
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft + " seconds until your quiz is over!";
 
+    if(secondsLeft === 0) {
+    clearInterval(timerInterval); 
+    endGame();
+  }
+
+}, 1000);
+}
+
+function endGame() {
+  timeEl.textContent = "Time's Up!";
+}
+
+
+
+startBtn.addEventListener('click', startGame);
+startBtn.addEventListener('click', setTime);
 //currently deletes all of the questions and options when start is clicked
 /*correct.addEventListener('click', () => {
   questionBank++
@@ -27,6 +47,7 @@ function startGame() {
 }
 
 
+
 function setNextQuestion() {
   resetEachQuestion()
   showQuestion(questionOptions[questionBank])
@@ -38,9 +59,9 @@ function showQuestion(question) {
     var button = document.createElement('button')
     button.innerText = answer.text
     button.classList.add('btn')
-    if (answer.correct) {
+    /*if (answer.correct) {*/
       button.dataset.correct = answer.correct
-    }
+    /*}*/
     button.addEventListener('click', selectAnswer)
     answerOptions.appendChild(button)
   })
@@ -54,21 +75,22 @@ function resetEachQuestion() {
 }
 
 function selectAnswer(e) {
-  const selectedButton = e.target
-  const correct = selectedButton.dataset.correct
+  /*var selectedButton = e.target*/
+  var correct = e.target.dataset.correct
   setAccuracy(document.body, correct)
-  Array.from(answerOptions.children).forEach(button => {
-    setAccuracy(button, button.dataset.correct)
-  })
-  if (questionOptions.length > questionBank + 1) {
-
-} else {
-    startBtn.innerText = 'Restart'
-    startBtn.classList.remove('hide')
+  //loops through all of the answers to check for correctness
+  /*Array.from(answerOptions.children).forEach(button => {
+    setAccuracy(button, button.dataset.correct)*/
+  if (correct === "false") {
+    //score--; 
+    //console.log(score);
+} if (correct === "true") {
+    //score++;
+    //console.log(score);
   }
+  questionBank++
+  setNextQuestion()
 }
-
-
 
 //show whether question is correct or incorrect
 function setAccuracy(element, correct) {
@@ -87,7 +109,7 @@ function setAccuracy(element, correct) {
 // question bank 
 const questions = [
   {
-    question: 'String values must be enclodes within ___ when being assigned to variables.',
+    question: 'String values must be enclosed within ___ when being assigned to variables.',
     answers: [
       { text: '1. commas', correct: false },
       { text: '2. quotes', correct: true },
