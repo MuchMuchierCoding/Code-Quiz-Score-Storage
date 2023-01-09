@@ -8,6 +8,7 @@ var questionOptions, questionBank
 var timeEl = document.querySelector(".timer");
 var secondsLeft = 30;
 
+//timer function
 function setTime() {
   var timerInterval = setInterval(function() {
     secondsLeft--;
@@ -21,21 +22,22 @@ function setTime() {
 }, 1000);
 }
 
+//message at the end of the timer function
 function endGame() {
   timeEl.textContent = "Time's Up!";
 }
 
-
-
+//click events to begin quiz and timer
 startBtn.addEventListener('click', startGame);
 startBtn.addEventListener('click', setTime);
+
 //currently deletes all of the questions and options when start is clicked
 /*correct.addEventListener('click', () => {
   questionBank++
   setNextQuestion()
 })*/
 
-//Initiates game at start button click. hides title and quiz instructions
+//Game initiation. hides title and quiz instructions
 function startGame() {
   startBtn.classList.add('hide')
   instructions.classList.add('hide')
@@ -47,10 +49,14 @@ function startGame() {
 }
 
 
-
 function setNextQuestion() {
   resetEachQuestion()
   showQuestion(questionOptions[questionBank])
+}
+
+function quizComplete() {
+  showQuestion--;
+  questionContainerEl.classList.add('hide');
 }
 
 function showQuestion(question) {
@@ -64,14 +70,14 @@ function showQuestion(question) {
     /*}*/
     button.addEventListener('click', selectAnswer)
     answerOptions.appendChild(button)
-  })
+  }) 
 }
 
 function resetEachQuestion() {
   setAccuracy(document.body)
   while (answerOptions.firstChild) {
     answerOptions.removeChild(answerOptions.firstChild)
-  }
+  } 
 }
 
 function selectAnswer(e) {
@@ -91,6 +97,7 @@ function selectAnswer(e) {
   questionBank++
   setNextQuestion()
 }
+
 
 //show whether question is correct or incorrect
 function setAccuracy(element, correct) {
