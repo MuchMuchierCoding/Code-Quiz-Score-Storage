@@ -4,7 +4,7 @@ var displayedQuestion = document.getElementById('question');
 var answerOptions = document.getElementById('answers');
 var instructions = document.getElementById('quizInstructions');
 var title = document.getElementById('quizTitle');
-var questionOptions, questionBank
+var questionOptions, questionBank, question
 var timeEl = document.querySelector(".timer");
 var secondsLeft = 10;
 
@@ -77,7 +77,7 @@ function startGame() {
   questionBank = 0
   questionContainerEl.classList.remove('hide')
   setNextQuestion()
-} if 
+} 
 
 function setNextQuestion() {
   resetEachQuestion()
@@ -85,12 +85,12 @@ function setNextQuestion() {
 } //var i = 0; i < questions.length; i++; {
   //endGame();
 
-  //if(questionBank.index === 0) {
-  //  console.log('Hello');
+  if(questionBank === 0) {
+  console.log('Hello');
     //clearInterval(timerInterval); 
     //console.log('test');
   //} //console.log('test 2');
-  //};
+  };
 
 
 function showQuestion(question) {
@@ -104,8 +104,8 @@ function showQuestion(question) {
     /*}*/
     button.addEventListener('click', selectAnswer)
     answerOptions.appendChild(button)
-  }) if (var i = 0; i < questions.length; i++; {
-    endGame();)
+  }) //i = 0; i < questions.length; i++; {
+    //endGame();
 };
 
 function resetEachQuestion() {
@@ -165,4 +165,3 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and my score
 */
-
