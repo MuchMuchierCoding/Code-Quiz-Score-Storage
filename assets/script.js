@@ -9,6 +9,7 @@ var timeEl = document.querySelector(".timer");
 var secondsLeft = 10;
 
 // question bank 
+
 const questions = [
   {
     question: 'String values must be enclosed within ___ when being assigned to variables.',
