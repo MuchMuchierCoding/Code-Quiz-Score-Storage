@@ -7,7 +7,7 @@
 
 ## Website Preview
 
-![Image of the page with stored data](.assets/preview.png)
+![Image of the page with stored data](./assets/preview.png)
 
 
 ## Authors and Acknowledgement
