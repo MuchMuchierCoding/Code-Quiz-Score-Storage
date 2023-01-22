@@ -2,7 +2,7 @@
 
 ## Description
 
-[Code-Quiz-Score-Storage]() is a simple coding quiz with multiple-choice questions. The application incorporates dynamically updates HTML and CSS powered by JavaScript code.  
+[Code-Quiz-Score-Storage](https://amandapaul1223.github.io/Code-Quiz-Score-Storage/) is a simple coding quiz with multiple-choice questions. The application incorporates dynamically updates HTML and CSS powered by JavaScript code.  
 
 
 ## Website Preview
