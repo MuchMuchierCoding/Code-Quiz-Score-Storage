@@ -4,12 +4,116 @@ var displayedQuestion = document.getElementById('question');
 var answerOptions = document.getElementById('answers');
 var instructions = document.getElementById('quizInstructions');
 var title = document.getElementById('quizTitle');
-var questionOptions, questionBank, question
+var questionOptions, questionBank
 var timeEl = document.querySelector(".timer");
 var secondsLeft = 10;
 
-// question bank 
+//timer function
+function setTime() {
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft + " seconds until your quiz is over!";
 
+    if(secondsLeft === 0) {
+    clearInterval(timerInterval); 
+    endGame();
+  }
+
+}, 1000);
+}
+
+//message at the end of the timer function
+function endGame() {
+  timeEl.textContent = "Time's Up!";
+}
+
+//click events to begin quiz and timer
+startBtn.addEventListener('click', startGame);
+startBtn.addEventListener('click', setTime);
+
+//currently deletes all of the questions and options when start is clicked
+/*correct.addEventListener('click', () => {
+  questionBank++
+  setNextQuestion()
+})*/
+
+//Game initiation. hides title and quiz instructions
+function startGame() {
+  startBtn.classList.add('hide')
+  instructions.classList.add('hide')
+  title.classList.add('hide')
+  questionOptions = questions.sort(() => Math.random() - .5)
+  questionBank = 0
+  questionContainerEl.classList.remove('hide')
+  setNextQuestion()
+}
+
+
+function setNextQuestion() {
+  resetEachQuestion()
+  showQuestion(questionOptions[questionBank])
+}
+
+function quizComplete() {
+  showQuestion--;
+  questionContainerEl.classList.add('hide');
+}
+
+function showQuestion(question) {
+  displayedQuestion.innerText = question.question
+  question.answers.forEach(answer => {
+    var button = document.createElement('button')
+    button.innerText = answer.text
+    button.classList.add('btn')
+    /*if (answer.correct) {*/
+      button.dataset.correct = answer.correct
+    /*}*/
+    button.addEventListener('click', selectAnswer)
+    answerOptions.appendChild(button)
+  }) 
+}
+
+function resetEachQuestion() {
+  setAccuracy(document.body)
+  while (answerOptions.firstChild) {
+    answerOptions.removeChild(answerOptions.firstChild)
+  } 
+}
+
+function selectAnswer(e) {
+  /*var selectedButton = e.target*/
+  var correct = e.target.dataset.correct
+  setAccuracy(document.body, correct)
+  //loops through all of the answers to check for correctness
+  /*Array.from(answerOptions.children).forEach(button => {
+    setAccuracy(button, button.dataset.correct)*/
+  if (correct === "false") {
+    //score--; 
+    //console.log(score);
+} if (correct === "true") {
+    //score++;
+    //console.log(score);
+  }
+  questionBank++
+  setNextQuestion()
+}
+
+
+//show whether question is correct or incorrect
+function setAccuracy(element, correct) {
+  if (correct) {
+    console.log('correct')
+  } else {
+    console.log('incorrect')
+  }
+}
+
+/*function setAccuracy(element) {
+  element.classList.remove('correct')
+  element.classList.remove('wrong')
+}*/
+
+// question bank 
 const questions = [
   {
     question: 'String values must be enclosed within ___ when being assigned to variables.',
@@ -40,118 +144,6 @@ const questions = [
     ]
   },
 ]
-
-//timer function
-function setTime() {
-  var timerInterval = setInterval(function() {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft + " seconds until your quiz is over!";
-
-    if (secondsLeft === 0) {
-      //console.log('Hello');
-      clearInterval(timerInterval); 
-      //console.log('test');
-      endGame();
-      //console.log('test 2');
-    } var i = 0; i < questionBank.length; i++; {
-      endGame();
-    }
-}, 1000);
-}
-
-//message at the end of the timer function
-function endGame() {
-    timeEl.textContent = ("Time's Up!");
-};
-
-//click events to begin quiz and timer
-startBtn.addEventListener('click', startGame);
-startBtn.addEventListener('click', setTime);
-
-
-//Game initiation. hides title and quiz instructions
-function startGame() {
-  startBtn.classList.add('hide')
-  instructions.classList.add('hide')
-  title.classList.add('hide')
-  questionOptions = questions.sort(() => Math.random() - .5)
-  questionBank = 0
-  questionContainerEl.classList.remove('hide')
-  setNextQuestion()
-} 
-
-function setNextQuestion() {
-  resetEachQuestion()
-  showQuestion(questionOptions[questionBank])
-} //var i = 0; i < questions.length; i++; {
-  //endGame();
-
-  if(questionBank === 0) {
-  console.log('Hello');
-    //clearInterval(timerInterval); 
-    //console.log('test');
-  //} //console.log('test 2');
-  };
-
-
-function showQuestion(question) {
-  displayedQuestion.innerText = question.question
-  question.answers.forEach(answer => {
-    var button = document.createElement('button')
-    button.innerText = answer.text
-    button.classList.add('btn')
-    /*if (answer.correct) {*/
-      button.dataset.correct = answer.correct
-    /*}*/
-    button.addEventListener('click', selectAnswer)
-    answerOptions.appendChild(button)
-  }) //i = 0; i < questions.length; i++; {
-    //endGame();
-};
-
-function resetEachQuestion() {
-  setAccuracy(document.body)
-  while (answerOptions.firstChild) {
-    answerOptions.removeChild(answerOptions.firstChild)
-  } 
-}
-
-function selectAnswer(e) {
-  /*var selectedButton = e.target*/
-  var correct = e.target.dataset.correct
-  setAccuracy(document.body, correct)
-  //loops through all of the answers to check for correctness
-  /*Array.from(answerOptions.children).forEach(button => {
-    setAccuracy(button, button.dataset.correct)*/
-  if (correct === "false") {
-    //score--; 
-    //console.log(score);
-} if (correct === "true") {
-    //score++;
-    //console.log(score);
-  }
-  questionBank++
-  setNextQuestion() 
-} //if (i = 0, i < questions.length, i++) {
-  //endGame();
-//};
-
-
-
-//show whether question is correct or incorrect
-function setAccuracy(element, correct) {
-  if (correct) {
-    console.log('correct')
-  } else {
-    console.log('incorrect')
-  }
-}
-
-/*function setAccuracy(element) {
-  element.classList.remove('correct')
-  element.classList.remove('wrong')
-}*/
-
 
 /*
 GIVEN I am taking a code quiz
